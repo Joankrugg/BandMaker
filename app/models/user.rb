@@ -7,4 +7,6 @@ class User < ApplicationRecord
 
   has_many :instrument_practices
   has_many :instruments, through: :instrument_practices
+  has_many :favorite_genres
+  has_many :genres, through: :favorite_genres
 end

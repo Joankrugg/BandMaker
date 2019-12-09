@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_08_194942) do
+ActiveRecord::Schema.define(version: 2019_12_08_234052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favorite_genres", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "genre_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre_id"], name: "index_favorite_genres_on_genre_id"
+    t.index ["user_id"], name: "index_favorite_genres_on_user_id"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "instrument_practices", force: :cascade do |t|
     t.bigint "user_id"
@@ -48,6 +63,8 @@ ActiveRecord::Schema.define(version: 2019_12_08_194942) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favorite_genres", "genres"
+  add_foreign_key "favorite_genres", "users"
   add_foreign_key "instrument_practices", "instruments"
   add_foreign_key "instrument_practices", "users"
 end
