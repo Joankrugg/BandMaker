@@ -22,3 +22,13 @@
     <%= i.name %>
   <% end %>
 <% end %>
+<% if @user.genres.present? %>
+  <% @user.genres.each do |i| %>
+    <%= i.name %>
+  <% end %>
+<% end %>
+<% if @user.abilities.present? %>
+  <% @user.abilities.each do |i| %>
+    <%= i.name %>
+  <% end %>
+<% end %>
