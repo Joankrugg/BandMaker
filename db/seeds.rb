@@ -49,16 +49,23 @@
 
 #puts "      💥"
 
-Ability.create({ name: 'Recording' })
-Ability.create({ name: 'Mix' })
-Ability.create({ name: 'Mastering' })
-Ability.create({ name: 'Music video making' })
-Ability.create({ name: 'Communication' })
-Ability.create({ name: 'Label' })
-Ability.create({ name: 'Sono live' })
-Ability.create({ name: 'Social Network' })
-Ability.create({ name: 'Radio' })
-Ability.create({ name: 'Photo' })
-Ability.create({ name: 'Association' })
+#Ability.create({ name: 'Recording' })
+#Ability.create({ name: 'Mix' })
+#Ability.create({ name: 'Mastering' })
+#Ability.create({ name: 'Music video making' })
+#Ability.create({ name: 'Communication' })
+#Ability.create({ name: 'Label' })
+#Ability.create({ name: 'Sono live' })
+#Ability.create({ name: 'Social Network' })
+#Ability.create({ name: 'Radio' })
+#Ability.create({ name: 'Photo' })
+#Ability.create({ name: 'Association' })
+
 
   puts "      💥"
+
+
+Category.create({ name: 'Amateur' })
+Category.create({ name: 'Confirmed' })
+Category.create({ name: 'Semi Pro' })
+Category.create({ name: 'Professionnal' })

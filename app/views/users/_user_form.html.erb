@@ -23,8 +23,9 @@
           <%= f.input :photo_cache, as: :hidden %>
           <%= f.association :instruments, as: :check_boxes %>
           <%= f.association :genres, as: :check_boxes %>
-          <%= f.input :mobility, as: :radio_buttons, collection: [['0', 'No'], ['1', 'Yes']], label_method: :second, value_method: :first %>
+          <%= f.input :mobility, as: :boolean, checked_value: true, unchecked_value: false %>
           <%= f.association :abilities, as: :check_boxes %>
+          <%= f.association :category, as: :radio_buttons %>
           <%= f.submit %>
         <% end %>
       </div>

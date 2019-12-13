@@ -22,6 +22,9 @@
     <%= i.name %>
   <% end %>
 <% end %>
+<% if @user.mobility.present? %>
+  <%= @user.mobility %>
+<% end %>
 <% if @user.genres.present? %>
   <% @user.genres.each do |i| %>
     <%= i.name %>
@@ -31,4 +34,7 @@
   <% @user.abilities.each do |i| %>
     <%= i.name %>
   <% end %>
+<% end %>
+<% if @user.category.present? %>
+  <%= @user.category.name %>
 <% end %>

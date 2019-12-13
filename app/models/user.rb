@@ -11,5 +11,6 @@ class User < ApplicationRecord
   has_many :genres, through: :favorite_genres
   has_many :user_abilities
   has_many :abilities, through: :user_abilities
+  belongs_to :category
 
 end
