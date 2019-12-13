@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_13_180502) do
+ActiveRecord::Schema.define(version: 2019_12_13_195708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,15 @@ ActiveRecord::Schema.define(version: 2019_12_13_180502) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "publications", force: :cascade do |t|
+    t.string "photo"
+    t.string "comment"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_publications_on_user_id"
+  end
+
   create_table "user_abilities", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "ability_id", null: false
@@ -101,6 +110,7 @@ ActiveRecord::Schema.define(version: 2019_12_13_180502) do
   add_foreign_key "favorite_genres", "users"
   add_foreign_key "instrument_practices", "instruments"
   add_foreign_key "instrument_practices", "users"
+  add_foreign_key "publications", "users"
   add_foreign_key "user_abilities", "abilities"
   add_foreign_key "user_abilities", "users"
   add_foreign_key "users", "categories"

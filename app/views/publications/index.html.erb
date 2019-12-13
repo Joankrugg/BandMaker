@@ -1,0 +1,12 @@
+<h1>Publications#index</h1>
+
+<%= link_to "Start now", new_publication_path, class: "btn btn-gradient" %>
+
+
+
+<% @publications.each do |p| %>
+  <%= link_to p.user do %>
+    <%= cl_image_tag  p.photo %>
+    <%= p.comment %>
+  <% end %>
+<% end %>
