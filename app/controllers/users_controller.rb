@@ -1,8 +1,31 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:edit, :update, :destroy]
+    before_action :set_user, only: [:edit, :update, :destroy, :follow, :unfollow]
+
+  def index
+    @users = User.where.not(id: current_user.id)
+  end
+
+  def follow
+    if current_user.follow(@user.id)
+      respond_to do |format|
+        format.html { redirect_to users_path }
+        format.js
+      end
+    end
+  end
+
+  def unfollow
+    if current_user.unfollow(@user.id)
+      respond_to do |format|
+        format.html { redirect_to users_path }
+        format.js { render action: :follow }
+      end
+    end
+  end
+
 
   def show
-    @user = current_user
+    @user = @user = User.find(params[:id])
   end
 
   def edit

@@ -38,3 +38,6 @@
 <% if @user.category.present? %>
   <%= @user.category.name %>
 <% end %>
+<% if @user != current_user %>
+  <%= render 'user' %>
+<% end %>
