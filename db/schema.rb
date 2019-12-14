@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_14_104119) do
+ActiveRecord::Schema.define(version: 2019_12_14_113130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "abilities", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "band_projects", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
+    t.string "photo"
+    t.text "influence"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -65,6 +74,15 @@ ActiveRecord::Schema.define(version: 2019_12_14_104119) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "musician_seeks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "band_project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["band_project_id"], name: "index_musician_seeks_on_band_project_id"
+    t.index ["user_id"], name: "index_musician_seeks_on_user_id"
   end
 
   create_table "publications", force: :cascade do |t|
@@ -118,6 +136,8 @@ ActiveRecord::Schema.define(version: 2019_12_14_104119) do
   add_foreign_key "favorite_genres", "users"
   add_foreign_key "instrument_practices", "instruments"
   add_foreign_key "instrument_practices", "users"
+  add_foreign_key "musician_seeks", "band_projects"
+  add_foreign_key "musician_seeks", "users"
   add_foreign_key "publications", "users"
   add_foreign_key "user_abilities", "abilities"
   add_foreign_key "user_abilities", "users"

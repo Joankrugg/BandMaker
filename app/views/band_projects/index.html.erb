@@ -1,0 +1,13 @@
+<h1>BandProjects#index</h1>
+
+<%= link_to "Band Project", new_band_project_path, class: "btn btn-gradient" %>
+
+
+<% @band_projects.each do |b| %>
+  <%= link_to b.users.first do %>
+    <%= cl_image_tag b.photo, height: 300, width: 400, crop: :fill  %>
+    <%= b.city %>
+    <%= b.name %>
+    <%= b.influence %>
+  <% end %>
+<% end %>

@@ -10,10 +10,10 @@ class User < ApplicationRecord
   has_many :favorite_genres
   has_many :genres, through: :favorite_genres
   has_many :user_abilities
+  has_many :musician_seeks
+  has_many :band_projects, through: :musician_seeks
   has_many :abilities, through: :user_abilities
-  belongs_to :category
   has_many :publications
-  belongs_to :region
 
   has_many :follower_relationships, foreign_key: :following_id, class_name: 'Follow'
   has_many :followers, through: :follower_relationships, source: :follower

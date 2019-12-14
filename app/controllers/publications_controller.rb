@@ -1,6 +1,7 @@
 class PublicationsController < ApplicationController
   before_action :set_pub, only: [:edit, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index]
   def index
     @publications = Publication.all
   end

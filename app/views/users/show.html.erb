@@ -35,12 +35,18 @@
     <%= i.name %>
   <% end %>
 <% end %>
-<% if @user.category.present? %>
-  <%= @user.category.name %>
-<% end %>
-<% if @user.region.present? %>
-  <%= @user.region.name %>
-<% end %>
+
 <% if @user != current_user %>
   <%= render 'user' %>
+<% end %>
+<%= link_to 'publish', new_publication_path %>
+<%= link_to 'Band_project', new_band_project_path %>
+
+<% if @user.band_projects.present? %>
+  <% @user.band_projects.each do |i| %>
+    <%= link_to i do %>
+      <%= i.name %>
+      <%= cl_image_tag i.photo, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  <% end %>
 <% end %>

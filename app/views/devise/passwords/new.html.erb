@@ -1,19 +1,18 @@
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    Forgot your password?
-      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-        <%= f.error_notification %>
-        <p class="card-text">
-          <form>
-            <input type="text" class="fadeIn second" autocomplete="email" autofocus="autofocus" required="required" aria-required="true" type="email" value="" name="user[email]" id="user_email" placeholder="login">
-            <input type="submit" class="fadeIn fourth" name="commit" value="Log In" class="btn" data-disable-with="Log in" placeholder="valider">
-          </form>
-        </p>
-      <% end %>
+<h2>Forgot your password?</h2>
 
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <%= render "devise/shared/links" %>
-    </div>
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" } %>
   </div>
-</div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Send me reset password instructions" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

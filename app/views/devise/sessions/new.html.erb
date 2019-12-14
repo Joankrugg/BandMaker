@@ -1,21 +1,20 @@
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    Connexion
-      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <p class="card-text">
-          <form>
-            <input type="text" id="login" class="fadeIn second" autocomplete="email" autofocus="autofocus" type="email" value="" name="user[email]" placeholder="login">
-            <input type="text" id="password" class="fadeIn third" autocomplete="current-password" type="password" name="user[password]"  placeholder="password">
-            <input type="submit" class="fadeIn fourth" name="commit" value="Log In" class="btn" data-disable-with="Log in">
-          </form>
-          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-        </p>
-      <% end %>
+<h2>Log in</h2>
 
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <%= render "devise/shared/links" %>
-    </div>
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :email,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "email" } %>
+    <%= f.input :password,
+                required: false,
+                input_html: { autocomplete: "current-password" } %>
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
-</div>
 
+  <div class="form-actions">
+    <%= f.button :submit, "Log in" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
