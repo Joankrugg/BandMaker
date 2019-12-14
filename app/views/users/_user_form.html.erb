@@ -26,6 +26,7 @@
           <%= f.input :mobility, as: :boolean, checked_value: true, unchecked_value: false %>
           <%= f.association :abilities, as: :check_boxes %>
           <%= f.association :category, as: :radio_buttons %>
+          <%= f.association :region, as: :radio_buttons %>
           <%= f.submit %>
         <% end %>
       </div>

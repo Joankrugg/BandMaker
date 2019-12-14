@@ -38,6 +38,9 @@
 <% if @user.category.present? %>
   <%= @user.category.name %>
 <% end %>
+<% if @user.region.present? %>
+  <%= @user.region.name %>
+<% end %>
 <% if @user != current_user %>
   <%= render 'user' %>
 <% end %>

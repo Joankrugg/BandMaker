@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :abilities, through: :user_abilities
   belongs_to :category
   has_many :publications
+  belongs_to :region
 
   has_many :follower_relationships, foreign_key: :following_id, class_name: 'Follow'
   has_many :followers, through: :follower_relationships, source: :follower
