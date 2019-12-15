@@ -25,6 +25,7 @@
           <%= f.association :genres, as: :check_boxes %>
           <%= f.input :mobility, as: :boolean, checked_value: true, unchecked_value: false %>
           <%= f.association :abilities, as: :check_boxes %>
+          <%= f.association :categories, as: :check_boxes %>
           <%= f.submit %>
         <% end %>
       </div>

@@ -2,34 +2,49 @@
 <% if @user.name.present? %>
   <%= @user.name %>
 <% end %>
+
 <% if @user.surname.present? %>
   <%= @user.surname %>
 <% end %>
+
 <% if @user.nickname.present? %>
   <%= @user.nickname %>
 <% end %>
+
 <% if @user.city.present? %>
   <%= @user.city %>
 <% end %>
+
 <% if @user.age.present? %>
   <%= @user.age %>
 <% end %>
+
 <% if @user.photo.present? %>
   <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
 <% end %>
+
 <% if @user.instruments.present? %>
   <% @user.instruments.each do |i| %>
     <%= i.name %>
   <% end %>
 <% end %>
+
 <% if @user.mobility.present? %>
   <%= @user.mobility %>
 <% end %>
+
+<% if @user.categories.present? %>
+  <%= @user.categories.each do |u| %>
+    <%= @user.u.name %>
+  <% end %>
+<% end %>
+
 <% if @user.genres.present? %>
   <% @user.genres.each do |i| %>
     <%= i.name %>
   <% end %>
 <% end %>
+
 <% if @user.abilities.present? %>
   <% @user.abilities.each do |i| %>
     <%= i.name %>
