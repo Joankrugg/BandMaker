@@ -1,4 +1,7 @@
-<%= render 'user_form' %>
+<% if @user == current_user %>
+  <%= render 'user_form' %>
+<% end %>
+
 <% if @user.name.present? %>
   <%= @user.name %>
 <% end %>
@@ -34,8 +37,14 @@
 <% end %>
 
 <% if @user.categories.present? %>
-  <%= @user.categories.each do |u| %>
-    <%= @user.u.name %>
+  <% @user.categories.each do |u| %>
+    <%= u.name %>
+  <% end %>
+<% end %>
+
+<% if @user.regions.present? %>
+  <% @user.regions.each do |a| %>
+    <%= a.name %>
   <% end %>
 <% end %>
 
