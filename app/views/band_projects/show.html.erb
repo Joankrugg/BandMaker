@@ -1,4 +1,19 @@
-<%= @band_project.name %>
-<%= @band_project.city %>
-<%= cl_image_tag @band_project.photo, height: 300, width: 400, crop: :fill %>
+<div class="card-trip">
+  <%= cl_image_tag @band_project.photo, height: 300, width: 400, crop: :fill %>
+  <div class="card-trip-infos">
+    <div>
+      <h2><%= @band_project.name %></h2>
+      <p><%= @band_project.city %></p>
+    </div>
+    <h2 class="card-trip-pricing">£99.99</h2>
+    <%= cl_image_tag @band_project.users.first.photo, class: "card-trip-user avatar-bordered" %>
+  </div>
+</div>
 
+<% if current_user == @band_project.users.first %>
+  <p>boss</p>
+<% elsif @band_project.users.include?(current_user) && current_user != @band_project.users.first %>
+  <p>member</p>
+<% else %>
+  <p>visitor</p>
+<% end %>

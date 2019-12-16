@@ -1,45 +1,58 @@
 <% if @user == current_user %>
   <%= render 'user_form' %>
 <% end %>
-
-<% if @user.name.present? %>
-  <%= @user.name %>
-<% end %>
-
-<% if @user.surname.present? %>
-  <%= @user.surname %>
-<% end %>
-
-<% if @user.nickname.present? %>
-  <%= @user.nickname %>
-<% end %>
-
-<% if @user.city.present? %>
-  <%= @user.city %>
-<% end %>
-
-<% if @user.age.present? %>
-  <%= @user.age %>
-<% end %>
-
-<% if @user.photo.present? %>
-  <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
-<% end %>
-
-<% if @user.instruments.present? %>
-  <% @user.instruments.each do |i| %>
-    <%= i.name %>
+<div class="card-product">
+  <% if @user.photo.present? %>
+    <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
   <% end %>
-<% end %>
+  <div class="card-product-infos">
+    <h2>
+      <% if @user.name.present? %>
+        <%= @user.name %>
+      <% end %>
+      <% if @user.surname.present? %>
+        <%= @user.surname %>
+      <% end %>
+    </h2>
+    <p>
+      <% if @user.nickname.present? %>
+        <%= @user.nickname %>
+      <% end %>
+    </p>
+    <p>
+      <% if @user.city.present? %>
+        <%= @user.city %>
+      <% end %>
+    </p>
+    <p>
+      <% if @user.age.present? %>
+        <%= @user.age %>
+      <% end %>
+    </p>
+    <p>Instrument:
+      <% if @user.instruments.present? %>
+        <% @user.instruments.each do |i| %>
+          <strong><%= i.name %></strong>
+        <% end %>
+      <% else %>
+        <strong>None</strong>
+      <% end %>
+      Level :
+      <strong>
+        <% if @user.categories.present? %>
+          <% @user.categories.each do |u| %>
+            <%= u.name %>
+          <% end %>
+        <% end %>
+      </strong> FOLLOW ME.
+    </p>
+  </div>
+</div>
+
+<%= link_to 'users', users_path %>
 
 <% if @user.mobility.present? %>
   <%= @user.mobility %>
-<% end %>
-
-<% if @user.categories.present? %>
-  <% @user.categories.each do |u| %>
-    <%= u.name %>
-  <% end %>
 <% end %>
 
 <% if @user.regions.present? %>
@@ -63,8 +76,10 @@
 <% if @user != current_user %>
   <%= render 'user' %>
 <% end %>
-<%= link_to 'publish', new_publication_path %>
-<%= link_to 'Band_project', new_band_project_path %>
+<% if @user == current_user %>
+  <%= link_to 'publish', new_publication_path %>
+  <%= link_to 'Band_project', new_band_project_path %>
+<% end %>
 
 <% if @user.band_projects.present? %>
   <% @user.band_projects.each do |i| %>
@@ -74,3 +89,4 @@
     <% end %>
   <% end %>
 <% end %>
+

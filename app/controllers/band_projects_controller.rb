@@ -14,6 +14,7 @@ class BandProjectsController < ApplicationController
     @band_project = current_user.band_projects.new(band_project_params)
     @band_project.users = []
     @band_project.users << current_user
+    @band_project.users.first.boss = true
     if
       @band_project.save
       redirect_to band_projects_path
@@ -48,6 +49,6 @@ class BandProjectsController < ApplicationController
   end
 
   def band_project_params
-    params.require(:band_project).permit(:photo, :name, :city, :influence)
+    params.require(:band_project).permit(:photo, :name, :city, :influence, :boss)
   end
 end
