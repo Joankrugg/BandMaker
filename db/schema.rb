@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_16_194528) do
+ActiveRecord::Schema.define(version: 2019_12_21_100852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 2019_12_16_194528) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "applyings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "band_project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["band_project_id"], name: "index_applyings_on_band_project_id"
+    t.index ["user_id"], name: "index_applyings_on_user_id"
+  end
+
   create_table "band_projects", force: :cascade do |t|
     t.string "name"
     t.string "city"
@@ -28,6 +37,8 @@ ActiveRecord::Schema.define(version: 2019_12_16_194528) do
     t.text "influence"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_band_projects_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -147,6 +158,9 @@ ActiveRecord::Schema.define(version: 2019_12_16_194528) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "applyings", "band_projects"
+  add_foreign_key "applyings", "users"
+  add_foreign_key "band_projects", "users"
   add_foreign_key "favorite_genres", "genres"
   add_foreign_key "favorite_genres", "users"
   add_foreign_key "instrument_practices", "instruments"

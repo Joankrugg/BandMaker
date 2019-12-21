@@ -1,5 +1,5 @@
 class BandProject < ApplicationRecord
-  has_many :musician_seeks
-  has_many :users, through: :musician_seeks
+  belongs_to :user, required: true
+  has_many :applyings
   mount_uploader :photo, PhotoUploader
 end

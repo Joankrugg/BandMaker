@@ -4,10 +4,23 @@
 
 
 <% @band_projects.each do |b| %>
-  <%= link_to b.users.first do %>
-    <%= cl_image_tag b.photo, height: 300, width: 400, crop: :fill  %>
-    <%= b.city %>
-    <%= b.name %>
-    <%= b.influence %>
+    <%= link_to b.user do %>
+    <div class="cards">
+      <% if b.photo.present? %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path b.photo, height: 300, width: 400, crop: :fill  %>')">
+          <%= b.city %>
+          <%= b.name %>
+          <%= b.influence %>
+        </div>
+      <% else %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/da2krghvd/image/upload/v1547652562/n957utnhaoddxycwrsxb.jpg)">
+          <%= b.city %>
+          <%= b.name %>
+          <%= b.influence %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 <% end %>
+
+

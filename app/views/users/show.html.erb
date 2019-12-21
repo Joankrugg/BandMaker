@@ -80,12 +80,23 @@
   <%= link_to 'publish', new_publication_path %>
   <%= link_to 'Band_project', new_band_project_path %>
 <% end %>
+<%= link_to 'Projects', band_projects_path %>
+
 
 <% if @user.band_projects.present? %>
   <% @user.band_projects.each do |i| %>
     <%= link_to i do %>
-      <%= i.name %>
-      <%= cl_image_tag i.photo, height: 300, width: 400, crop: :fill %>
+      <div class="card-trip">
+        <%= cl_image_tag i.photo, height: 300, width: 400, crop: :fill %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= i.name %></h2>
+            <p><%= i.city %></p>
+          </div>
+          <h2 class="card-trip-pricing">£99.99</h2>
+          <%= cl_image_tag i.user.photo, class: "card-trip-user avatar-bordered" %>
+        </div>
+      </div>
     <% end %>
   <% end %>
 <% end %>
