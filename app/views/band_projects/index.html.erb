@@ -2,25 +2,76 @@
 
 <%= link_to "Band Project", new_band_project_path, class: "btn btn-gradient" %>
 
+<div class="container">
+  <div class="row">
+    <% @band_projects.each do |b| %>
+      <%= link_to b.user do %>
+        <div class="card card-cascade wider col-4">
+          <% if b.photo.present? %>
+        <!-- Card image -->
+            <div class="view view-cascade overlay">
+              <img  class="card-img-top" src="<%= cl_image_path b.photo, height: 300, width: 400, crop: :fill  %>" alt="Card image cap">
+              <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
 
-<% @band_projects.each do |b| %>
-    <%= link_to b.user do %>
-    <div class="cards">
-      <% if b.photo.present? %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path b.photo, height: 300, width: 400, crop: :fill  %>')">
-          <%= b.city %>
-          <%= b.name %>
-          <%= b.influence %>
-        </div>
-      <% else %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/da2krghvd/image/upload/v1547652562/n957utnhaoddxycwrsxb.jpg)">
-          <%= b.city %>
-          <%= b.name %>
-          <%= b.influence %>
+            <!-- Card content -->
+            <div class="card-body card-body-cascade text-center pb-0">
+
+              <!-- Title -->
+              <h4 class="card-title"><strong><%= b.name %></strong></h4>
+              <!-- Subtitle -->
+              <h5 class="blue-text pb-2"><strong><%= b.city %></strong></h5>
+              <!-- Text -->
+              <p class="card-text"><%= b.influence %> </p>
+
+              <!-- Linkedin -->
+              <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
+              <!-- Twitter -->
+              <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
+              <!-- Dribbble -->
+              <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
+
+              <!-- Card footer -->
+              <div class="card-footer text-muted text-center mt-4">
+                2 days ago
+              </div>
+            </div>
+          <% else %>
+            <div class="view view-cascade overlay">
+              <img  class="card-img-top" src="https://res.cloudinary.com/da2krghvd/image/upload/v1547652562/n957utnhaoddxycwrsxb.jpg" alt="Card image cap">
+              <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+
+            <!-- Card content -->
+            <div class="card-body card-body-cascade text-center pb-0">
+
+              <!-- Title -->
+              <h4 class="card-title"><strong><%= b.name %></strong></h4>
+              <!-- Subtitle -->
+              <h5 class="blue-text pb-2"><strong><%= b.city %></strong></h5>
+              <!-- Text -->
+              <p class="card-text"><%= b.influence %></p>
+
+              <!-- Linkedin -->
+              <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
+              <!-- Twitter -->
+              <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
+              <!-- Dribbble -->
+              <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
+
+              <!-- Card footer -->
+              <div class="card-footer text-muted text-center mt-4">
+                2 days ago
+              </div>
+            </div>
+          <% end %>
         </div>
       <% end %>
-    </div>
-  <% end %>
-<% end %>
-
+    <% end %>
+  </div>
+</div>
 
