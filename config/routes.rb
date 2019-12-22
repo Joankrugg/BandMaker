@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'applyings/new'
+  get 'applyings/create'
+  get 'applyings/destroy'
   devise_for :users
   root to: 'pages#home'
   resources :users, only: [:index, :show, :edit, :update, :destroy] do
@@ -7,7 +10,7 @@ Rails.application.routes.draw do
       post :unfollow
     end
   end
-
+  resources :applyings, only: [:new, :create, :destroy]
   resources :publications, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :band_projects
 

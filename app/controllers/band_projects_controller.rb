@@ -23,6 +23,7 @@ class BandProjectsController < ApplicationController
   end
 
   def show
+    @applying = @band_project.applyings.new
   end
 
   def edit

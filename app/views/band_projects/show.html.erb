@@ -17,5 +17,5 @@
 <% end %>
 
 <% if current_user != @band_project.user %>
-  <p><%= link_to 'join', method: :join %></p>
+  <%= render 'applyings/form' %>
 <% end %>
