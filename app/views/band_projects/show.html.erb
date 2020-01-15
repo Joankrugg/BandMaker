@@ -12,6 +12,11 @@
 
 <% if current_user == @band_project.user %>
   <p>boss</p>
+  <% if @band_project.applyings.present? %>
+    <% @band_project.applyings.each do |a| %>
+      <%= a.message %>
+    <% end %>
+  <% end %>
 <% else %>
   <p>visitor</p>
 <% end %>

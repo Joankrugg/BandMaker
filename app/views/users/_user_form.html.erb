@@ -19,7 +19,7 @@
           <%= f.input :nickname %>
           <%= f.input :city %>
           <%= f.input :age %>
-          <%= f.input :photo %>
+          <%= f.input :photo, input_html: { class: 'hidden d-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
           <%= f.input :photo_cache, as: :hidden %>
           <%= f.association :instruments, as: :check_boxes %>
           <%= f.association :genres, as: :check_boxes %>

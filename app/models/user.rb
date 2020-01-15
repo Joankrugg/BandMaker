@@ -13,9 +13,9 @@ class User < ApplicationRecord
   has_many :user_abilities
   has_many :musician_seeks
 
-  has_many :band_projects, dependent: :destroy
   has_many :applyings
-  has_many :band_project_applyings, through: :applyings, source: :band_projects
+  has_many :band_projects, dependent: :destroy
+  has_many :band_project_applyings, through: :band_projects, source: :applyings
 
   has_many :abilities, through: :user_abilities
   has_many :publications

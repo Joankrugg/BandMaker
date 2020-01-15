@@ -1,35 +1,43 @@
 <% if @user == current_user %>
   <%= render 'user_form' %>
 <% end %>
-<div class="card-product">
-  <% if @user.photo.present? %>
-    <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
-  <% end %>
-  <div class="card-product-infos">
-    <h2>
+<!-- Card -->
+<div class="card card-cascade wider reverse">
+
+  <!-- Card image -->
+  <div class="view view-cascade overlay">
+      <% if @user.photo.present? %>
+        <%= cl_image_tag @user.photo, class: "card-img-top" %>
+      <% else %>
+        <%= cl_image_tag "gszxqviaydsccaq4ec87.jpg", class: "card-img-top" %>
+      <% end %>
+      <div class="mask rgba-white-slight"></div>
+    </a>
+  </div>
+
+  <!-- Card content -->
+  <div class="card-body card-body-cascade text-center">
+
+    <!-- Title -->
+    <h4 class="card-title">
+      <strong><%= @user.email %></strong><br>
+      <strong>
       <% if @user.name.present? %>
         <%= @user.name %>
       <% end %>
       <% if @user.surname.present? %>
         <%= @user.surname %>
       <% end %>
-    </h2>
-    <p>
-      <% if @user.nickname.present? %>
-        <%= @user.nickname %>
-      <% end %>
-    </p>
-    <p>
+      </strong>
+    </h4>
+    <!-- Subtitle -->
+    <h6 class="font-weight-bold indigo-text py-2">
       <% if @user.city.present? %>
         <%= @user.city %>
       <% end %>
-    </p>
-    <p>
-      <% if @user.age.present? %>
-        <%= @user.age %>
-      <% end %>
-    </p>
-    <p>Instrument:
+    </h6>
+    <!-- Text -->
+    <p class="card-text">Instrument:
       <% if @user.instruments.present? %>
         <% @user.instruments.each do |i| %>
           <strong><%= i.name %></strong>
@@ -44,7 +52,38 @@
             <%= u.name %>
           <% end %>
         <% end %>
-      </strong> FOLLOW ME.
+      </strong> FOLLOW ME.</p>
+
+    <!-- Linkedin -->
+    <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
+    <!-- Twitter -->
+    <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
+    <!-- Dribbble -->
+    <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
+
+    <a class="px-2 fa-lg fb-ic"><i class="fab fa-black-tie"></i></a>
+
+  </div>
+
+</div>
+<!-- Card -->
+<div class="card-product">
+  <% if @user.photo.present? %>
+    <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
+  <% else %>
+    <%= cl_image_tag("gszxqviaydsccaq4ec87.jpg") %>
+  <% end %>
+  <div class="card-product-infos">
+    <p>
+      <% if @user.nickname.present? %>
+        <%= @user.nickname %>
+      <% end %>
+    </p>
+
+    <p>
+      <% if @user.age.present? %>
+        <%= @user.age %>
+      <% end %>
     </p>
   </div>
 </div>
