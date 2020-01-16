@@ -14,7 +14,8 @@
   <p>boss</p>
   <% if @band_project.applyings.present? %>
     <% @band_project.applyings.each do |a| %>
-      <%= a.message %>
+      <%= a.user.try(:email) %>
+      <%= a.message %><br>
     <% end %>
   <% end %>
 <% else %>

@@ -7,6 +7,7 @@ class ApplyingsController < ApplicationController
   def create
     @applying = current_user.applyings.new(applying_params)
     @band_project = @applying.band_project
+    @user = @applying.user
     if @applying.save
       render 'band_projects/show'
     else
