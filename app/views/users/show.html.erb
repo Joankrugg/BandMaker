@@ -1,6 +1,3 @@
-<% if @user == current_user %>
-  <%= render 'user_form' %>
-<% end %>
 <!-- Card -->
 <div class="card card-cascade wider reverse">
 
@@ -53,6 +50,28 @@
           <% end %>
         <% end %>
       </strong> FOLLOW ME.</p>
+      <% if @user.mobility.present? %>
+        <%= @user.mobility %>
+      <% end %>
+      <br>
+      <% if @user.regions.present? %>
+        <% @user.regions.each do |a| %>
+          <%= a.name %>
+        <% end %>
+      <% end %>
+      <br>
+      <% if @user.genres.present? %>
+        <% @user.genres.each do |i| %>
+          <%= i.name %>
+        <% end %>
+      <% end %>
+      <br>
+      <% if @user.abilities.present? %>
+        <% @user.abilities.each do |i| %>
+          <%= i.name %>
+        <% end %>
+      <% end %>
+      <br>
 
     <!-- Linkedin -->
     <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
@@ -62,6 +81,12 @@
     <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
 
     <a class="px-2 fa-lg fb-ic"><i class="fab fa-black-tie"></i></a>
+
+    <br>
+
+  <% if @user == current_user %>
+    <%= render 'user_form' %>
+  <% end %>
 
   </div>
 
@@ -88,38 +113,18 @@
   </div>
 </div>
 
-<%= link_to 'users', users_path %>
+<%= link_to 'users', users_path, class: "btn-flat" %>
 
-<% if @user.mobility.present? %>
-  <%= @user.mobility %>
-<% end %>
 
-<% if @user.regions.present? %>
-  <% @user.regions.each do |a| %>
-    <%= a.name %>
-  <% end %>
-<% end %>
-
-<% if @user.genres.present? %>
-  <% @user.genres.each do |i| %>
-    <%= i.name %>
-  <% end %>
-<% end %>
-
-<% if @user.abilities.present? %>
-  <% @user.abilities.each do |i| %>
-    <%= i.name %>
-  <% end %>
-<% end %>
 
 <% if @user != current_user %>
   <%= render 'user' %>
 <% end %>
 <% if @user == current_user %>
-  <%= link_to 'publish', new_publication_path %>
-  <%= link_to 'Band_project', new_band_project_path %>
+  <%= link_to 'publish', new_publication_path, class: "btn-flat" %>
+  <%= link_to 'Band_project', new_band_project_path, class: "btn-flat" %>
 <% end %>
-<%= link_to 'Projects', band_projects_path %>
+<%= link_to 'Projects', band_projects_path, class: "btn-flat" %>
 
 
 <% if @user.band_projects.present? %>
