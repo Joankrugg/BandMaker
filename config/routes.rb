@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'applyings/create'
   get 'applyings/destroy'
   devise_for :users
-  root to: 'pages#home'
+  root to: 'publications#index'
   resources :users, only: [:index, :show, :edit, :update, :destroy] do
     member do
       post :follow
