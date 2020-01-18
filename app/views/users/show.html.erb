@@ -1,3 +1,24 @@
+<% if @user == current_user %>
+  <%= render 'user_form' %>
+<% end %>
+
+
+<%= link_to 'users', users_path, class: "btn-flat" %>
+
+
+
+<% if @user != current_user %>
+  <%= render 'user' %>
+<% end %>
+<% if @user == current_user %>
+  <%= link_to 'publish', new_publication_path, class: "btn-flat" %>
+  <%= link_to 'Band_project', new_band_project_path, class: "btn-flat" %>
+<% end %>
+<%= link_to 'Projects', band_projects_path, class: "btn-flat" %>
+
+
+
+
 <div class="container main-section">
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12 image-section">
@@ -185,23 +206,7 @@
 </div>
 
 
-<% if @user == current_user %>
-  <%= render 'user_form' %>
-<% end %>
 
-
-<%= link_to 'users', users_path, class: "btn-flat" %>
-
-
-
-<% if @user != current_user %>
-  <%= render 'user' %>
-<% end %>
-<% if @user == current_user %>
-  <%= link_to 'publish', new_publication_path, class: "btn-flat" %>
-  <%= link_to 'Band_project', new_band_project_path, class: "btn-flat" %>
-<% end %>
-<%= link_to 'Projects', band_projects_path, class: "btn-flat" %>
 
 
 
