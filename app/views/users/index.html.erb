@@ -1,114 +1,67 @@
-<div class="container">
-  <div class="row">
-    <% @users.each do |u| %>
-      <%= link_to u do %>
-        <!-- Card Wider -->
-        <div class="card card-cascade wider col-4">
-
-          <!-- Card image -->
-          <div class="view view-cascade overlay">
-            <img  class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/photo6.jpg" alt="Card image cap">
-            <a href="#!">
-              <div class="mask rgba-white-slight"></div>
-            </a>
-          </div>
-
-          <!-- Card content -->
-          <div class="card-body card-body-cascade text-center pb-0">
-
-            <!-- Title -->
-            <h4 class="card-title"><strong><%= u.email %></strong></h4>
-            <!-- Subtitle -->
-            <h5 class="blue-text pb-2"><strong>Graffiti Artist</strong></h5>
-            <!-- Text -->
-            <p class="card-text">Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totam rem aperiam. </p>
-
-            <!-- Linkedin -->
-            <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
-            <!-- Twitter -->
-            <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
-            <!-- Dribbble -->
-            <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
-
-            <!-- Card footer -->
-            <div class="card-footer text-muted text-center mt-4">
-              2 days ago
-            </div>
-
-          </div>
-
-        </div>
-      <!-- Card Wider -->
-
-      <% end %>
-    <% end %>
-  </div>
-</div>
-
 <section id="team" class="pb-5">
-    <div class="container">
-        <h5 class="section-title h1">OUR TEAM</h5>
-        <div class="row">
-        <% @users.each do |u| %>
-          <%= link_to u do %>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                    <div class="mainflip">
-                        <div class="frontside">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <p>
-                                      <% if u.photo.present? %>
-                                        <%= cl_image_tag u.photo, class: "img-fluid" %>
-                                      <% else %>
-                                        <%= cl_image_tag 'gszxqviaydsccaq4ec87', class: "img-fluid" %>
-                                      <% end %>
-                                    </p>
-                                    <h4 class="card-title"><%= u.email %></h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="backside">
-                            <div class="card">
-                                <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-skype"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="card-footer text-muted text-center mt-4">
-                                  2 days ago
-                                </div>
-                            </div>
-                        </div>
+  <div class="container">
+    <h5 class="section-title h1">USERS</h5>
+      <div class="row">
+      <% @users.each do |u| %>
+        <%= link_to u do %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+              <div class="mainflip">
+                <div class="frontside">
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <p>
+                        <% if u.photo.present? %>
+                          <%= cl_image_tag u.photo, class: "img-fluid" %>
+                        <% else %>
+                          <%= cl_image_tag 'gszxqviaydsccaq4ec87', class: "img-fluid" %>
+                        <% end %>
+                      </p>
+                      <h4 class="card-title"><%= u.email %></h4>
+                      <p class="card-text">This is basic card with image on top, title, description and button.</p>
+                      <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
                     </div>
+                  </div>
                 </div>
+                <div class="backside">
+                  <div class="card">
+                    <div class="card-body text-center mt-4">
+                      <h4 class="card-title">Sunlimetech</h4>
+                      <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
+                      <ul class="list-inline">
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank" href="#">
+                            <i class="fab fa-facebook"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank" href="#">
+                            <i class="fab fa-twitter"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank" href="#">
+                            <i class="fab fa-skype"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank" href="#">
+                            <i class="fab fa-google"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="card-footer text-muted text-center mt-4">
+                      <%= u.updated_at.strftime('%d/%m/%y') %>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <!-- ./Team member -->
-          <% end %>
+          </div>
+          <!-- ./Team member -->
         <% end %>
-        </div>
+      <% end %>
     </div>
+  </div>
 </section>
