@@ -28,7 +28,11 @@
       <div class="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left">
         <div class="row ">
           <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
-
+            <% if @user.photo.present? %>
+              <%= cl_image_tag @user.photo, class: "card-img-top" %>
+            <% else %>
+              <%= cl_image_tag "gszxqviaydsccaq4ec87.jpg", class: "card-img-top" %>
+            <% end %>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
             <button class="btn btn-defult follow "><i class="fa fa-user-o" aria-hidden="true"></i> FOLLOW</button>
