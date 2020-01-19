@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   mount_uploader :photo, PhotoUploader
 
+  has_one_attached :photo
+
   has_many :instrument_practices
   has_many :instruments, through: :instrument_practices
   has_many :favorite_genres
